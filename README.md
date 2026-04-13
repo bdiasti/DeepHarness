@@ -42,7 +42,6 @@ cd frontend
 npm install
 npm run dev
 ```
-
 Open **http://localhost:3000**. The harness works out of the box with:
 
 - Chat with the agent
@@ -50,6 +49,28 @@ Open **http://localhost:3000**. The harness works out of the box with:
 - Sensors (linter, directives, drift)
 - Built-in Task Manager
 - Mission Control showing everything in real time
+
+### Task Manager (required for the Board tab)
+
+If you are **not** using Azure DevOps, start the built-in Task Manager microservice to enable the Board view:
+
+```bash
+# Option A — just the task manager (PostgreSQL + API on port 8100)
+docker compose -f docker-compose.infra.yml up task-manager -d
+
+# Option B — bring up the full infra stack (task manager + all other integrations)
+docker compose -f docker-compose.infra.yml up -d
+```
+
+After it's up:
+
+- **API**: http://localhost:8100/docs (Swagger UI)
+- **Board tab** in the UI will connect automatically and show your kanban
+
+If you **are** using Azure DevOps instead, configure the Azure DevOps integration in the project's `integrations.json` — the harness will use it as the task source and you can skip running the local Task Manager.
+
+
+
 
 ---
 
