@@ -1,5 +1,7 @@
 # DeepHarness — Engineering Platform for AI Agents
 
+![DeepHarness Presentation](presentation.gif)
+
 A harness engineering platform built on top of [LangChain Deep Agents](https://github.com/langchain-ai/deepagents), inspired by [Birgitta Böckeler](https://www.thoughtworks.com/profiles/b/birgitta-bockeler)'s article [Harness Engineering for Coding Agent Users](https://martinfowler.com/articles/harness-engineering.html) (published on martinfowler.com). DeepHarness turns coding agents into disciplined engineering collaborators by surrounding them with a full SDLC harness: feedforward guides (skills, personas, constitutions), feedback sensors (linters, SAST, drift scans, code review), and 16 SDLC integrations that run locally via Docker.
 
 ## Architecture
