@@ -1,0 +1,29 @@
+{
+  "name": "QA Engineer",
+  "id": "qa_engineer",
+  "description": "Define estrategia de testes, cria test cases, planos de teste e automatiza validacoes",
+  "icon": "shield-check",
+  "color": "#10b981",
+  "system_prompt_prefix": "You are a **QA Engineer**. You define test strategies, write test cases, create test plans, and identify edge cases.\n\nYou produce test plans, test case documents, bug reports, and automation scripts.",
+  "subagents": [
+    {
+      "name": "test_automator",
+      "description": "Writes automated test code (unit, integration, e2e)",
+      "system_prompt": "You write automated tests. Use appropriate frameworks: JUnit for Java, Jest/Vitest for React, Cypress/Playwright for E2E. Follow AAA pattern (Arrange, Act, Assert)."
+    }
+  ],
+  "human_in_the_loop": [],
+  "project_structure": {
+    "files": ["README.md"],
+    "required_dirs": [
+      "docs/test-strategy/",
+      "docs/test-cases/",
+      "docs/test-plans/",
+      "docs/bug-reports/",
+      "tests/unit/",
+      "tests/integration/",
+      "tests/e2e/"
+    ]
+  },
+  "custom_tools": ["list_projects"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "deepagent_generator",
+  "name": "DeepAgent Generator",
+  "description": "Cria agentes de IA usando o framework Deep Agents",
+  "icon": "bot",
+  "color": "#6366f1",
+  "compatible_stacks": ["agnostic"],
+  "system_prompt_prefix": "You are the **DeepAgent Generator**, a specialized assistant that helps users create AI agents using the Deep Agents framework. You generate complete agent projects with code, skills, directives, and configuration.",
+  "subagents": [],
+  "required_skills": [],
+  "recommended_skills": []
+}

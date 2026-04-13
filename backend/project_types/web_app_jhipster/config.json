@@ -1,0 +1,23 @@
+{
+  "id": "web_app_jhipster",
+  "name": "Web App (JHipster)",
+  "description": "Fullstack web app gerado com JHipster: Spring Boot + React/Angular/Vue + JPA + Liquibase",
+  "icon": "layers",
+  "color": "#06b6d4",
+  "mandatory_stack": ["backend/java_spring", "frontend/react", "database/postgresql", "database/jpa"],
+  "project_structure": {
+    "files": ["README.md", "pom.xml", "package.json", ".gitignore", "Dockerfile", "docker-compose.yml"],
+    "required_dirs": [
+      "src/main/java/com/app/web/rest/",
+      "src/main/java/com/app/service/",
+      "src/main/java/com/app/repository/",
+      "src/main/java/com/app/domain/",
+      "src/main/java/com/app/dto/",
+      "src/main/java/com/app/config/",
+      "src/main/resources/config/liquibase/changelog/",
+      "src/main/webapp/app/entities/",
+      "src/main/webapp/app/shared/",
+      "src/test/java/com/app/"
+    ]
+  }
+}

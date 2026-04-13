@@ -1,0 +1,25 @@
+{
+  "id": "angular_dotnet",
+  "name": "Angular + .NET",
+  "description": "Frontend Angular + Backend .NET Core/ASP.NET",
+  "icon": "layers",
+  "color": "#dc2626",
+  "tech": ["Angular", "TypeScript", ".NET Core", "C#", "SQL Server"],
+  "project_structure": {
+    "files": ["README.md", "docker-compose.yml", ".gitignore", ".editorconfig"],
+    "required_dirs": [
+      "frontend/src/app/components/",
+      "frontend/src/app/services/",
+      "frontend/src/app/models/",
+      "frontend/src/app/guards/",
+      "frontend/src/app/interceptors/",
+      "backend/Controllers/",
+      "backend/Services/",
+      "backend/Repositories/",
+      "backend/Models/",
+      "backend/DTOs/",
+      "backend/Middlewares/",
+      "docs/"
+    ]
+  }
+}

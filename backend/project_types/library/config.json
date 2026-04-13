@@ -1,0 +1,17 @@
+{
+  "id": "library",
+  "name": "Library / Package",
+  "description": "Biblioteca reutilizavel publicada em npm/pypi/maven",
+  "icon": "layers",
+  "color": "#f59e0b",
+  "mandatory_stack": ["testing/unit_testing"],
+  "project_structure": {
+    "files": ["README.md", "LICENSE", ".gitignore", "CHANGELOG.md"],
+    "required_dirs": [
+      "src/",
+      "tests/",
+      "docs/",
+      "examples/"
+    ]
+  }
+}

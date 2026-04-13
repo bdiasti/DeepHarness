@@ -1,0 +1,10 @@
+deepagents
+langchain>=1.0,<2.0
+langchain-core>=1.0,<2.0
+langchain-openai
+langgraph>=1.0,<2.0
+langsmith>=0.3.0
+fastapi
+uvicorn[standard]
+sse-starlette
+python-dotenv

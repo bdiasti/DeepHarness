@@ -1,0 +1,160 @@
+
+version: "3.8"
+
+# DeepAgent Harness — Infrastructure Stack
+# Sobe todos os servicos necessarios para o SDLC completo
+#
+# Uso:
+#   docker compose -f docker-compose.infra.yml up -d      # subir tudo
+#   docker compose -f docker-compose.infra.yml ps          # ver status
+#   docker compose -f docker-compose.infra.yml down        # derrubar tudo
+#   docker compose -f docker-compose.infra.yml down -v     # derrubar + apagar dados
+
+services:
+  # ─── TASK MANAGER ───
+  task-manager:
+    build: ./services/task-manager
+    container_name: harness-task-manager
+    ports:
+      - "8100:8100"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${TASKMANAGER_DB_USER:-taskmanager}:${TASKMANAGER_DB_PASSWORD:?TASKMANAGER_DB_PASSWORD required}@task-manager-db:5432/${TASKMANAGER_DB_NAME:-taskmanager}
+    depends_on:
+      task-manager-db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  task-manager-db:
+    image: postgres:16
+    container_name: harness-task-manager-db
+    environment:
+      POSTGRES_USER: ${TASKMANAGER_DB_USER:-taskmanager}
+      POSTGRES_PASSWORD: ${TASKMANAGER_DB_PASSWORD:?TASKMANAGER_DB_PASSWORD required}
+      POSTGRES_DB: ${TASKMANAGER_DB_NAME:-taskmanager}
+    volumes:
+      - taskmanager_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-taskmanager}"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  # ─── SECRETS ───
+  vault:
+    image: hashicorp/vault
+    container_name: harness-vault
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_TOKEN:?VAULT_TOKEN required}
+    cap_add:
+      - IPC_LOCK
+    restart: unless-stopped
+
+  # ─── QUALITY GATE ───
+  sonarqube:
+    image: sonarqube:community
+    container_name: harness-sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+    restart: unless-stopped
+
+  # ─── DATABASE ───
+  postgres:
+    image: postgres:16
+    container_name: harness-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD required}
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # ─── DOCKER REGISTRY ───
+  registry:
+    image: registry:2
+    container_name: harness-registry
+    ports:
+      - "5000:5000"
+    volumes:
+      - registry_data:/var/lib/registry
+    restart: unless-stopped
+
+  # ─── MONITORING ───
+  prometheus:
+    image: prom/prometheus
+    container_name: harness-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    container_name: harness-grafana
+    ports:
+      - "3001:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?GRAFANA_ADMIN_PASSWORD required}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  # ─── NOTIFICATIONS ───
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: harness-ntfy
+    ports:
+      - "8080:80"
+    command: serve
+    volumes:
+      - ntfy_data:/var/lib/ntfy
+    restart: unless-stopped
+
+  # ─── FEATURE FLAGS ───
+  flagsmith:
+    image: flagsmith/flagsmith:latest
+    container_name: harness-flagsmith
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: postgresql://${FLAGSMITH_DB_USER:-app}:${FLAGSMITH_DB_PASSWORD:?FLAGSMITH_DB_PASSWORD required}@flagsmith-db:5432/${FLAGSMITH_DB_NAME:-flagsmith}
+      DJANGO_ALLOWED_HOSTS: "*"
+      ALLOW_ADMIN_INITIATION_VIA_CLI: "true"
+    depends_on:
+      - flagsmith-db
+    restart: unless-stopped
+
+  flagsmith-db:
+    image: postgres:16
+    container_name: harness-flagsmith-db
+    environment:
+      POSTGRES_USER: ${FLAGSMITH_DB_USER:-app}
+      POSTGRES_PASSWORD: ${FLAGSMITH_DB_PASSWORD:?FLAGSMITH_DB_PASSWORD required}
+      POSTGRES_DB: ${FLAGSMITH_DB_NAME:-flagsmith}
+    volumes:
+      - flagsmith_db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  taskmanager_data:
+  sonarqube_data:
+  postgres_data:
+  registry_data:
+  prometheus_data:
+  grafana_data:
+  ntfy_data:
+  flagsmith_db_data:

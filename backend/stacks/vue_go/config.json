@@ -1,0 +1,26 @@
+{
+  "id": "vue_go",
+  "name": "Vue + Go",
+  "description": "Frontend Vue 3 + Backend Go (Gin/Fiber)",
+  "icon": "layers",
+  "color": "#22c55e",
+  "tech": ["Vue 3", "TypeScript", "Pinia", "Go", "Gin", "PostgreSQL"],
+  "project_structure": {
+    "files": ["README.md", "docker-compose.yml", ".gitignore", "go.mod"],
+    "required_dirs": [
+      "frontend/src/components/",
+      "frontend/src/views/",
+      "frontend/src/stores/",
+      "frontend/src/services/",
+      "frontend/src/types/",
+      "backend/cmd/",
+      "backend/internal/handlers/",
+      "backend/internal/services/",
+      "backend/internal/repositories/",
+      "backend/internal/models/",
+      "backend/internal/middleware/",
+      "backend/pkg/",
+      "docs/"
+    ]
+  }
+}

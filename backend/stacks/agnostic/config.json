@@ -1,0 +1,12 @@
+{
+  "id": "agnostic",
+  "name": "Stack-agnostic",
+  "description": "Sem stack especifico — escolha tecnologia conforme necessario",
+  "icon": "layers",
+  "color": "#64748b",
+  "tech": [],
+  "project_structure": {
+    "files": ["README.md"],
+    "required_dirs": []
+  }
+}

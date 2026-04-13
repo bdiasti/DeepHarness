@@ -1,0 +1,16 @@
+{
+  "id": "cli_tool",
+  "name": "CLI Tool",
+  "description": "Ferramenta de linha de comando Python com Typer ou Click",
+  "icon": "code",
+  "color": "#10b981",
+  "mandatory_stack": ["backend/fastapi"],
+  "project_structure": {
+    "files": ["README.md", "pyproject.toml", ".gitignore", "Dockerfile"],
+    "required_dirs": [
+      "src/",
+      "tests/",
+      "docs/"
+    ]
+  }
+}

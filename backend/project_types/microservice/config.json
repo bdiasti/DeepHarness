@@ -1,0 +1,21 @@
+{
+  "id": "microservice",
+  "name": "Microservice",
+  "description": "Microservico Spring Boot com API REST, observabilidade e deploy em K8s",
+  "icon": "layers",
+  "color": "#3b82f6",
+  "mandatory_stack": ["backend/java_spring", "architecture/clean_arch", "devops/docker", "devops/kubernetes", "devops/observability"],
+  "project_structure": {
+    "files": ["README.md", "pom.xml", "Dockerfile", ".gitignore", "k8s/deployment.yaml", "k8s/service.yaml"],
+    "required_dirs": [
+      "src/main/java/com/app/api/",
+      "src/main/java/com/app/application/",
+      "src/main/java/com/app/domain/",
+      "src/main/java/com/app/infrastructure/",
+      "src/main/resources/",
+      "src/test/java/com/app/",
+      "k8s/",
+      "docs/"
+    ]
+  }
+}

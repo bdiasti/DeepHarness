@@ -1,0 +1,25 @@
+{
+  "id": "react_java",
+  "name": "React + Java Spring",
+  "description": "Frontend React/TypeScript + Backend Java Spring Boot",
+  "icon": "layers",
+  "color": "#06b6d4",
+  "tech": ["React", "TypeScript", "Java", "Spring Boot", "PostgreSQL"],
+  "project_structure": {
+    "files": ["README.md", "docker-compose.yml", ".gitignore"],
+    "required_dirs": [
+      "frontend/src/components/",
+      "frontend/src/hooks/",
+      "frontend/src/pages/",
+      "frontend/src/services/",
+      "frontend/src/types/",
+      "backend/src/main/java/com/app/controller/",
+      "backend/src/main/java/com/app/service/",
+      "backend/src/main/java/com/app/repository/",
+      "backend/src/main/java/com/app/entity/",
+      "backend/src/main/java/com/app/dto/",
+      "backend/src/main/java/com/app/config/",
+      "docs/"
+    ]
+  }
+}

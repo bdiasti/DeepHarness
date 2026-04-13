@@ -1,0 +1,39 @@
+{
+  "name": "Fullstack React + Java",
+  "id": "fullstack_react_java",
+  "description": "Desenvolve aplicacoes fullstack com React no frontend e Java Spring Boot no backend",
+  "icon": "layers",
+  "color": "#06b6d4",
+  "system_prompt_prefix": "You are a **Senior Fullstack Developer** specialized in React (TypeScript) frontend and Java Spring Boot backend.\n\nYou build complete applications following clean architecture, SOLID principles, and modern best practices.",
+  "subagents": [
+    {
+      "name": "frontend_dev",
+      "description": "Develops React TypeScript components, hooks, pages, and styling",
+      "system_prompt": "You are a React/TypeScript specialist. Write clean, typed, accessible components. Use functional components with hooks. Follow the project's coding standards strictly."
+    },
+    {
+      "name": "backend_dev",
+      "description": "Develops Java Spring Boot APIs, services, repositories, and entities",
+      "system_prompt": "You are a Java Spring Boot specialist. Write clean, layered code following DDD patterns. Use proper DTOs, services, repositories. Follow the project's coding standards strictly."
+    }
+  ],
+  "human_in_the_loop": ["write_file"],
+  "project_structure": {
+    "files": ["README.md", "docker-compose.yml", ".gitignore"],
+    "required_dirs": [
+      "frontend/src/components/",
+      "frontend/src/hooks/",
+      "frontend/src/pages/",
+      "frontend/src/services/",
+      "frontend/src/types/",
+      "backend/src/main/java/com/app/controller/",
+      "backend/src/main/java/com/app/service/",
+      "backend/src/main/java/com/app/repository/",
+      "backend/src/main/java/com/app/entity/",
+      "backend/src/main/java/com/app/dto/",
+      "backend/src/main/java/com/app/config/",
+      "docs/"
+    ]
+  },
+  "custom_tools": ["list_projects"]
+}

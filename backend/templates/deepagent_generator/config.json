@@ -1,0 +1,15 @@
+{
+  "name": "DeepAgent Generator",
+  "id": "deepagent_generator",
+  "description": "Gera Deep Agents completos com skills, subagents e tools configurados",
+  "icon": "bot",
+  "color": "#6366f1",
+  "system_prompt_prefix": "You are the **DeepAgent Generator**. You help users create AI agents using the Deep Agents framework.\n\nYou create complete agent projects with code, skills, and configuration.",
+  "subagents": [],
+  "human_in_the_loop": [],
+  "project_structure": {
+    "files": ["agent.py", "requirements.txt", "langgraph.json", ".env.example", "README.md"],
+    "optional_dirs": ["skills/"]
+  },
+  "custom_tools": ["generate_agent_code", "validate_agent_config", "list_available_models", "list_available_tools", "list_middleware_options", "list_projects"]
+}

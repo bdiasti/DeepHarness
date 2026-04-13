@@ -1,0 +1,12 @@
+{
+  "id": "custom",
+  "name": "Projeto Custom",
+  "description": "Projeto sem constitution — flexibilidade total. Use apenas quando outros tipos nao servem",
+  "icon": "code",
+  "color": "#64748b",
+  "mandatory_stack": [],
+  "project_structure": {
+    "files": ["README.md"],
+    "required_dirs": []
+  }
+}

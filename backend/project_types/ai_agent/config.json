@@ -1,0 +1,16 @@
+{
+  "id": "ai_agent",
+  "name": "AI Agent (Deep Agents)",
+  "description": "Agente IA usando LangChain Deep Agents com skills, subagents e MCP",
+  "icon": "bot",
+  "color": "#8b5cf6",
+  "mandatory_stack": ["backend/fastapi"],
+  "project_structure": {
+    "files": ["README.md", "agent.py", "requirements.txt", "langgraph.json", ".env.example", "Dockerfile"],
+    "required_dirs": [
+      "skills/",
+      "tools/",
+      "tests/"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "python_fastapi",
+  "name": "Python FastAPI",
+  "description": "Backend Python com FastAPI, SQLAlchemy, PostgreSQL",
+  "icon": "layers",
+  "color": "#3b82f6",
+  "tech": ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Pydantic"],
+  "project_structure": {
+    "files": ["README.md", "requirements.txt", "Dockerfile", ".gitignore", "pyproject.toml"],
+    "required_dirs": [
+      "app/routers/",
+      "app/services/",
+      "app/repositories/",
+      "app/models/",
+      "app/schemas/",
+      "app/core/",
+      "app/db/",
+      "tests/",
+      "alembic/versions/",
+      "docs/"
+    ]
+  }
+}

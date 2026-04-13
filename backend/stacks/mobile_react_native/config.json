@@ -1,0 +1,22 @@
+{
+  "id": "mobile_react_native",
+  "name": "Mobile (React Native)",
+  "description": "App mobile cross-platform com React Native + Expo",
+  "icon": "smartphone",
+  "color": "#a855f7",
+  "tech": ["React Native", "TypeScript", "Expo", "React Navigation"],
+  "project_structure": {
+    "files": ["README.md", "app.json", "package.json", ".gitignore", "tsconfig.json"],
+    "required_dirs": [
+      "src/screens/",
+      "src/components/",
+      "src/navigation/",
+      "src/hooks/",
+      "src/services/",
+      "src/store/",
+      "src/types/",
+      "src/utils/",
+      "assets/"
+    ]
+  }
+}

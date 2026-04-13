@@ -1,0 +1,20 @@
+{
+  "id": "mobile_app",
+  "name": "Mobile App",
+  "description": "App mobile cross-platform com React Native + Expo",
+  "icon": "smartphone",
+  "color": "#a855f7",
+  "mandatory_stack": ["mobile/react_native"],
+  "project_structure": {
+    "files": ["README.md", "app.json", "package.json", "tsconfig.json", ".gitignore"],
+    "required_dirs": [
+      "src/screens/",
+      "src/components/",
+      "src/navigation/",
+      "src/services/",
+      "src/hooks/",
+      "src/store/",
+      "assets/"
+    ]
+  }
+}
