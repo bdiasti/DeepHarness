@@ -1,4 +1,4 @@
-# DeepHarness — Engineering Platform for AI Agents
+# DeepHarness — Engineering Harness for AI Coding Agents
 
 ![DeepHarness Presentation](presentation.gif)
 
